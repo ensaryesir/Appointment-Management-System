@@ -1,103 +1,71 @@
-// App.js
+var http = require('http'); //http modülünü yükleme
+var fs = require('fs'); //fs modülü dosya işlemlerinde kullanılır
 
-var express = require("express"),
-	mongoose = require("mongoose"),
-	passport = require("passport"),
-	bodyParser = require("body-parser"),
-	LocalStrategy = require("passport-local"),
-	passportLocalMongoose =
-		require("passport-local-mongoose")
-const User = require("./model/User");
+var express = require('express');
+var path=require('path');
 var app = express();
+app.use('/public',express.static(path.join(__dirname,'public'))); //public klasörünü erişime açtık
+                                                                 //bu işleme haritalama deniyor
+app.get('/',function(req,res){
+    fs.readFile('index.html',function(err,data){
 
-mongoose.connect("mongodb://localhost/27017");
-
-app.set("view engine", "ejs");
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(require("express-session")({
-	secret: "Rusty is a dog",
-	resave: false,
-	saveUninitialized: false
-}));
-
-app.use(passport.initialize());
-app.use(passport.session());
-
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-
-//=====================
-// ROUTES
-//=====================
-
-// Showing home page
-app.get("/", function (req, res) {
-	res.render("home");
+        res.write(data); //fonk data parametresini kullanıcıya geri yolladım
+        res.end('mesaj bitti');
+        console.log('homeController');
+    });
 });
 
-// Showing secret page
-app.get("/secret", isLoggedIn, function (req, res) {
-	res.render("secret");
+app.get('/login',function(req,res){
+    fs.readFile('login.html',function(err,data){
+
+        res.write(data); //fonk data parametresini kullanıcıya geri yolladım
+        //res.end('mesaj bitti');
+        console.log('loginController');
+    });
 });
 
-// Showing register form
-app.get("/register", function (req, res) {
-	res.render("register");
-});
+//var yonlendirici = Object();
 
-// Handling user signup
-app.post("/register", async (req, res) => {
-	const user = await User.create({
-	username: req.body.username,
-	password: req.body.password
-	});
-	
-	return res.status(200).json(user);
-});
+/*var homeController = function(req,res){
+    fs.readFile('index.html',function(err,data){
 
-//Showing login form
-app.get("/login", function (req, res) {
-	res.render("login");
-});
+        res.write(data); //fonk data parametresini kullanıcıya geri yolladım
+        res.end('mesaj bitti');
+        console.log('homeController');
+    });
+}*/
 
-//Handling user login
-app.post("/login", async function(req, res){
-	try {
-		// check if the user exists
-		const user = await User.findOne({ username: req.body.username });
-		if (user) {
-		//check if password matches
-		const result = req.body.password === user.password;
-		if (result) {
-			res.render("secret");
-		} else {
-			res.status(400).json({ error: "password doesn't match" });
-		}
-		} else {
-		res.status(400).json({ error: "User doesn't exist" });
-		}
-	} catch (error) {
-		res.status(400).json({ error });
-	}
-});
+/*var loginController = function(req,res){
+    fs.readFile('login.html',function(err,data){
 
-//Handling user logout
-app.get("/logout", function (req, res) {
-	req.logout(function(err) {
-		if (err) { return next(err); }
-		res.redirect('/');
-	});
-});
+        res.write(data); //fonk data parametresini kullanıcıya geri yolladım
 
+        res.write('deneme');
+        res.end('mesaj bitti');
+        console.log('loginController');
+    });
+}*/
 
+//express kullandığım için yonlendirici ve oluşturduğum controllerlara gerek yok
+//yonlendirici['/']=homeController;
+//yonlendirici['/login']=loginController;
 
-function isLoggedIn(req, res, next) {
-	if (req.isAuthenticated()) return next();
-	res.redirect("/login");
-}
+/*var server = http.createServer(function(req,res){ 
+//server oluştururken kullanıcının isteğine cevap verecek bir fonk belirlememiz gerekiyor
+//bu fonk parametre veriyoruz. parametrenin ilki yapılan istek, ikincisi ise kullanıcıya verilen cevap
 
-var port = process.env.PORT || 3000;
-app.listen(port, function () {
-	console.log("Server Has Started!");
-});
+if (req.url in yonlendirici)
+    yonlendirici[req.url](req,res);
+
+/* //yonlendirici kullandığım için bunlara ihtiyacım kalmadı
+    if(req.url=='/' || 'index'){ 
+        homeController(req,res);
+    }
+
+    if(req.url=='/login'){ //kullanıcının isteği (/login) ise login safyasına git
+        loginController(req,res);
+    }
+*/
+//});
+
+app.listen(8000); //8k portunda çalışır
