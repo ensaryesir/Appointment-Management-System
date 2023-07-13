@@ -1,28 +1,18 @@
-var http = require('http'); //http modülünü yükleme
-var fs = require('fs'); //fs modülü dosya işlemlerinde kullanılır
+//var http = require('http'); //http modülünü yükleme
+//var fs = require('fs'); //fs modülü dosya işlemlerinde kullanılır
 
 var express = require('express');
 var path=require('path');
 var app = express();
-app.use('/public',express.static(path.join(__dirname,'public'))); //public klasörünü erişime açtık
-                                                                 //bu işleme haritalama deniyor
-app.get('/',function(req,res){
-    fs.readFile('index.html',function(err,data){
 
-        res.write(data); //fonk data parametresini kullanıcıya geri yolladım
-        res.end('mesaj bitti');
-        console.log('homeController');
-    });
-});
+var route = require('./router/router');
 
-app.get('/login',function(req,res){
-    fs.readFile('login.html',function(err,data){
+app.use('/public',express.static(path.join(__dirname,'public'))); //public klasörünü erişime açtık (bu işleme haritalama deniyor )
 
-        res.write(data); //fonk data parametresini kullanıcıya geri yolladım
-        //res.end('mesaj bitti');
-        console.log('loginController');
-    });
-});
+app.use('/',route);
+
+//app.get('/index',ctrl.index);
+//app.get('/login',ctrl.login);
 
 //var yonlendirici = Object();
 
