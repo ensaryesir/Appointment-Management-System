@@ -3,7 +3,7 @@ var path=require('path');
 module.exports.index = function(req,res){
     //console.log(req.deneme); //middleware ile console a yazıyı çağırdım
     //res.sendFile(path.join(__dirname,'../../view/index.html'));
-    res.render('index',{mesaj:'ejs deneme'});
+    res.render('index');
 };
 
 
@@ -23,3 +23,6 @@ module.exports.DeleteAppointment = function(req,res){
     res.sendFile(path.join(__dirname,'../../view/DeleteAppointment.html'));
 };
 
+module.exports.layout = function(req,res){
+    res.render('layout');
+}

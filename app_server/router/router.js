@@ -13,4 +13,6 @@ router.get('/AddAppointment',controller.AddAppointment);
 router.get('/UpdateAppointment',controller.UpdateAppointment);
 router.get('/DeleteAppointment',controller.DeleteAppointment);
 
+router.get('/layout',controller.layout)
+
 module.exports = router;

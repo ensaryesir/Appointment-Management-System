@@ -4,6 +4,7 @@
 var express = require('express');
 var path=require('path');
 var app = express();
+var ejsLayouts = require('express-ejs-layouts');
 
 app.set('view engine', 'ejs') //görüntü motorunu tanımlama
 app.set('views', path.join(__dirname,'./app_server/views')); //görüntülerin bulunacağı klasörü belirttim
@@ -20,6 +21,8 @@ app.use(function(req, res, next){
     console.log("time...:"+ Date.now());
     next();
 });
+
+app.use(ejsLayouts);
 
 //app.get('/index',ctrl.index);
 //app.get('/login',ctrl.login);
