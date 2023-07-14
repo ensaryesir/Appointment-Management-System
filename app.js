@@ -5,7 +5,7 @@ var express = require('express');
 var path=require('path');
 var app = express();
 
-var route = require('./router/router');
+var route = require('./app_server/router/router');
 
 app.use('/public',express.static(path.join(__dirname,'public'))); //public klasörünü erişime açtık (bu işleme haritalama deniyor )
 
