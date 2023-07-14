@@ -11,12 +11,6 @@ app.use('/public',express.static(path.join(__dirname,'public'))); //public klas√
 
 app.use('/',route);
 
-app.use(function(req, res, next){
-    console.log("url...:"+req.url);
-    console.log("time...:"+ Date.now());
-    next();
-});
-
 //app.get('/index',ctrl.index);
 //app.get('/login',ctrl.login);
 
