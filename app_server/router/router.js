@@ -7,7 +7,7 @@ router.use(function(req, res, next){
     next(); //middleware oluşturursak bir sonrakine geçiş için next kullanmamız lazım
 });
 
-router.get('/home',controller.index);
+router.get('/index',controller.index);
 router.get('/login',controller.login);
 router.get('/AddAppointment',controller.AddAppointment);
 router.get('/UpdateAppointment',controller.UpdateAppointment);

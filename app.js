@@ -5,6 +5,10 @@ var express = require('express');
 var path=require('path');
 var app = express();
 
+app.set('view engine', 'ejs') //görüntü motorunu tanımlama
+app.set('views', path.join(__dirname,'./app_server/views')); //görüntülerin bulunacağı klasörü belirttim
+
+
 var route = require('./app_server/router/router');
 
 app.use('/public',express.static(path.join(__dirname,'public'))); //public klasörünü erişime açtık (bu işleme haritalama deniyor )
