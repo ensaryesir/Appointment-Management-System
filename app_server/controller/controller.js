@@ -1,30 +1,33 @@
 var path=require('path');
 
-module.exports.index = function(req,res){
-    //res.sendFile(path.join(__dirname,'../../view/index.html'));
-    res.render('index');
+module.exports.home = function(req,res){
+    res.render('home');
 };
 
 module.exports.login = function(req,res){
-    //res.sendFile(path.join(__dirname,'../../view/login.html'));
     res.render('login');
 };
 
-module.exports.AddAppointment = function(req,res){
-    //res.sendFile(path.join(__dirname,'../../view/AddAppointment.html'));
-    res.render('AddAppointment');
+module.exports.addAppointment = function(req,res){
+    res.render('add-appointment');
 };
 
-module.exports.UpdateAppointment = function(req,res){
-    //res.sendFile(path.join(__dirname,'../../view/UpdateAppointment.html'));
-    res.render('UpdateAppointment');
+module.exports.updateAppointment = function(req,res){
+    res.render('update-appointment');
 };
 
-module.exports.DeleteAppointment = function(req,res){
+module.exports.appointments = function(req,res){
+    res.render('appointments');
+};
+
+/*module.exports.layout = function(req,res){
     //res.sendFile(path.join(__dirname,'../../view/DeleteAppointment.html'));
-    res.render('DeleteAppointment');
-};
-
-module.exports.layout = function(req,res){
     res.render('layout');
+};*/
+
+/****************************************************************************************/
+
+module.exports.loginPost = function(req,res){ //e-posta ve şifre girildikten sonra appointments sayfasına atması için
+    console.log(req.body);
+    res.render('appointments');
 }

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Management System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="http://localhost:8000/index">Appointment Management System</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:8000/appointments">Randevular</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:8000/add-appointment">Randevu Ekle</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="appointments" class="container">
+            <h2>Randevular</h2>
+            <div class="row" id="appointment-list">
+                <!-- Listeye dinamik olarak randevular eklenir -->
+            </div>
+        </section>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Dummy randevu verileri
+        const appointments = [
+            { id: 1, date: "2023-07-19", time: "10:00", customer: "John Doe" },
+            { id: 2, date: "2023-07-20", time: "14:30", customer: "Jane Smith" },
+            { id: 3, date: "2023-07-21", time: "11:15", customer: "Michael Johnson" }
+        ];
+
+        // Randevu listesini oluştur
+        function createAppointmentList() {
+            const appointmentList = document.getElementById("appointment-list");
+            appointmentList.innerHTML = "";
+
+            for (const appointment of appointments) {
+                const appointmentCard = document.createElement("div");
+                appointmentCard.classList.add("col-md-4", "mb-4");
+
+                const card = document.createElement("div");
+                card.classList.add("card", "h-100");
+
+                const cardBody = document.createElement("div");
+                cardBody.classList.add("card-body");
+
+                const cardTitle = document.createElement("h5");
+                cardTitle.classList.add("card-title");
+                cardTitle.textContent = `Randevu #${appointment.id}`;
+
+                const cardText = document.createElement("p");
+                cardText.classList.add("card-text");
+                cardText.innerHTML = `
+                    <strong>Tarih:</strong> ${appointment.date}<br>
+                    <strong>Saat:</strong> ${appointment.time}<br>
+                    <strong>Müşteri Adı:</strong> ${appointment.customer}
+                `;
+
+                const editButton = document.createElement("button");
+                editButton.classList.add("btn", "btn-primary", "mr-2");
+                editButton.textContent = "Düzenle";
+                editButton.addEventListener("click", () => editAppointment(appointment));
+
+                const deleteButton = document.createElement("button");
+                deleteButton.classList.add("btn", "btn-danger");
+                deleteButton.textContent = "Sil";
+                deleteButton.addEventListener("click", () => deleteAppointment(appointment));
+
+                cardBody.appendChild(cardTitle);
+                cardBody.appendChild(cardText);
+                cardBody.appendChild(editButton);
+                cardBody.appendChild(deleteButton);
+
+                card.appendChild(cardBody);
+                appointmentCard.appendChild(card);
+                appointmentList.appendChild(appointmentCard);
+            }
+        }
+
+        // Randevu düzenleme işlemi
+        function editAppointment(appointment) {
+            // Düzenleme işlemi burada yapılır
+            console.log("Randevu Düzenle:", appointment);
+        }
+
+        // Randevu silme işlemi
+        function deleteAppointment(appointment) {
+            const index = appointments.findIndex(a => a.id === appointment.id);
+            if (index !== -1) {
+                appointments.splice(index, 1);
+                createAppointmentList();
+            }
+        }
+
+        // Sayfa yüklendiğinde randevu listesini oluştur
+        document.addEventListener("DOMContentLoaded", () => {
+            createAppointmentList();
+        });
+    </script>
+</body>
+</html>
