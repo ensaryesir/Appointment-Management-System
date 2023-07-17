@@ -16,6 +16,6 @@ router.get('/appointments',controller.appointments);
 //router.get('/layout',controller.layout);
 /***************************************************************************************/
 
-router.post('/login',controller.loginPost); //index sayfasındaki post işlemi
+router.post('/login',controller.loginPost); //home sayfasındaki post işlemi
 
 module.exports = router;
