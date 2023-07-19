@@ -1,120 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../../public/css/appointments.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
     <title>Appointment Management System</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="../../public/appointment/appointment.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="public/css/index.css" rel="stylesheet" />
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="http://localhost:8000/home">Appointment Management System</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+<body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="#page-top">Appointment Management System</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="http://localhost:8000/appointments">Randevular</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="http://localhost:8000/add-appointment">Randevu Ekle</a>
-                    </li>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#projects">Appointments</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Add Appointment</a></li>
                 </ul>
             </div>
-        </nav>
+        </div>
+    </nav>
+    <!-- Masthead-->
+    <header class="masthead">
+        <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+            <div class="d-flex justify-content-center">
+                <div class="text-center">
+                    <h1 class="mx-auto my-0 text-uppercase">Appointment Management System</h1>
+                    <h2 class="text-white-50 mx-auto mt-2 mb-5">Embrace a New Era in Appointment Management!</h2>
+                    <a class="btn btn-primary" href="#projects">Appointments</a>
+                </div>
+            </div>
+        </div>
     </header>
+    
+        <!-- Projects section (closed for use)--> <!--randevuları bu kısma yerleştireceğim-->
+        <section class="projects-section bg-light" id="projects"> 
+            <!--style="background-image: url('../../public/assets/img/bg-masthead.jpg'); background-size: cover; background-repeat: no-repeat; height: 300px;"-->
+            <h2 class="text-center">My Appointments</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Subject</th>
+                <th>Participants</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2023-03-08</td>
+                <td>10:00</td>
+                <td>Toplantı</td>
+                <td>Ahmet, Mehmet, Hasan</td>
+                <td><a href="#">Sil</a></td>
+            </tr>
+            <tr>
+                <td>2023-03-09</td>
+                <td>14:00</td>
+                <td>Ders</td>
+                <td>Fatma, Gülşah, Zeynep</td>
+                <td><a href="#">Sil</a></td>
+            </tr>
+        </tbody>
+    </table>
+        </section>
 
-    <main>
-        <section id="appointments" class="container">
-            <h2>Randevular</h2>
-            <div class="row" id="appointment-list">
-                <!-- Listeye dinamik olarak randevular eklenir -->
+
+        
+        <!-- Signup-->
+        <section class="signup-section" id="signup">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5">
+                    <div class="col-md-10 col-lg-8 mx-auto text-center">
+                        <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
+                        <h2 class="text-white mb-5">Subscribe to receive updates!</h2>
+                        <!-- * * * * * * * * * * * * * * *-->
+                        <!-- * * SB Forms Contact Form * *-->
+                        <!-- * * * * * * * * * * * * * * *-->
+                        <!-- This form is pre-integrated with SB Forms.-->
+                        <!-- To make this form functional, sign up at-->
+                        <!-- https://startbootstrap.com/solution/contact-forms-->
+                        <!-- to get an API token!-->
+                        <form class="form-signup" id="contactForm" data-sb-form-api-token="API_TOKEN">
+                            <!-- Email address input-->
+                            <div class="row input-group-newsletter">
+                                <div class="col"><input class="form-control" id="emailAddress" type="email" placeholder="Enter email address..." aria-label="Enter email address..." data-sb-validations="required,email" /></div>
+                                <div class="col-auto"><button class="btn btn-primary disabled" id="submitButton" type="submit">Notify Me!</button></div>
+                            </div>
+                            <div class="invalid-feedback mt-2" data-sb-feedback="emailAddress:required">An email is required.</div>
+                            <div class="invalid-feedback mt-2" data-sb-feedback="emailAddress:email">Email is not valid.</div>
+                            <!-- Submit success message-->
+                            <!---->
+                            <!-- This is what your users will see when the form-->
+                            <!-- has successfully submitted-->
+                            <div class="d-none" id="submitSuccessMessage">
+                                <div class="text-center mb-3 mt-2 text-white">
+                                    <div class="fw-bolder">Form submission successful!</div>
+                                    To activate this form, sign up at
+                                    <br />
+                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                                </div>
+                            </div>
+                            <!-- Submit error message-->
+                            <!---->
+                            <!-- This is what your users will see when there is-->
+                            <!-- an error submitting the form-->
+                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3 mt-2">Error sending message!</div></div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </section>
-    </main>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
+        <!-- Contact-->
+        <section class="contact-section bg-black">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5">
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="card py-4 h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+                                <h4 class="text-uppercase m-0">Address</h4>
+                                <hr class="my-4 mx-auto" />
+                                <div class="small text-black-50">Bahçelievler Mahallesi 320 Sokak No: 3/B Gazi Üniversitesi Teknopark C/110 Gölbaşı/Ankara</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="card py-4 h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-envelope text-primary mb-2"></i>
+                                <h4 class="text-uppercase m-0">Email</h4>
+                                <hr class="my-4 mx-auto" />
+                                <div class="small text-black-50"><a href="#!">yesirensar@gmail.com</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="card py-4 h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-mobile-alt text-primary mb-2"></i>
+                                <h4 class="text-uppercase m-0">Phone</h4>
+                                <hr class="my-4 mx-auto" />
+                                <div class="small text-black-50">+90 (533) 303-4461</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="social d-flex justify-content-center">
+                    <a class="mx-2" href="https://github.com/ensaryesir"><i class="fab fa-github"></i></a>
+                    <a class="mx-2" href="https://www.linkedin.com/in/ensar-yesir/"><i class="fab fa-linkedin"></i></a>
+                    
+                </div>
+            </div>
+        </section>
     <script>
-        // Dummy randevu verileri
-        const appointments = [
-            { id: 1, date: "2023-07-19", time: "10:00", customer: "John Doe" },
-            { id: 2, date: "2023-07-20", time: "14:30", customer: "Jane Smith" },
-            { id: 3, date: "2023-07-21", time: "11:15", customer: "Michael Johnson" }
-        ];
-
-        // Randevu listesini oluştur
-        function createAppointmentList() {
-            const appointmentList = document.getElementById("appointment-list");
-            appointmentList.innerHTML = "";
-
-            for (const appointment of appointments) {
-                const appointmentCard = document.createElement("div");
-                appointmentCard.classList.add("col-md-4", "mb-4");
-
-                const card = document.createElement("div");
-                card.classList.add("card", "h-100");
-
-                const cardBody = document.createElement("div");
-                cardBody.classList.add("card-body");
-
-                const cardTitle = document.createElement("h5");
-                cardTitle.classList.add("card-title");
-                cardTitle.textContent = `Randevu #${appointment.id}`;
-
-                const cardText = document.createElement("p");
-                cardText.classList.add("card-text");
-                cardText.innerHTML = `
-                    <strong>Tarih:</strong> ${appointment.date}<br>
-                    <strong>Saat:</strong> ${appointment.time}<br>
-                    <strong>Müşteri Adı:</strong> ${appointment.customer}
-                `;
-
-                const editButton = document.createElement("button");
-                editButton.classList.add("btn", "btn-primary", "mr-2");
-                editButton.textContent = "Düzenle";
-                editButton.addEventListener("click", () => editAppointment(appointment));
-
-                const deleteButton = document.createElement("button");
-                deleteButton.classList.add("btn", "btn-danger");
-                deleteButton.textContent = "Sil";
-                deleteButton.addEventListener("click", () => deleteAppointment(appointment));
-
-                cardBody.appendChild(cardTitle);
-                cardBody.appendChild(cardText);
-                cardBody.appendChild(editButton);
-                cardBody.appendChild(deleteButton);
-
-                card.appendChild(cardBody);
-                appointmentCard.appendChild(card);
-                appointmentList.appendChild(appointmentCard);
-            }
-        }
-
-        // Randevu düzenleme işlemi
-        function editAppointment(appointment) {
-            // Düzenleme işlemi burada yapılır
-            console.log("Randevu Düzenle:", appointment);
-        }
-
-        // Randevu silme işlemi
-        function deleteAppointment(appointment) {
-            const index = appointments.findIndex(a => a.id === appointment.id);
-            if (index !== -1) {
-                appointments.splice(index, 1);
-                createAppointmentList();
-            }
-        }
-
-        // Sayfa yüklendiğinde randevu listesini oluştur
-        document.addEventListener("DOMContentLoaded", () => {
-            createAppointmentList();
+        document.querySelector('.img__btn').addEventListener('click', function() {
+            document.querySelector('.cont').classList.toggle('s--signup');
         });
     </script>
+
+    <!-- Footer-->
+    <footer class="footer bg-black small text-center text-white-50">
+        <div class="container px-4 px-lg-5">Copyright &copy; Appointment Management System 2023
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="public/js/scripts.js"></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 </html>
