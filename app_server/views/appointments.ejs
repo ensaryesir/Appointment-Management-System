@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="public/css/index.css" rel="stylesheet" />
+
 </head>
 <body id="page-top">
     <!-- Navigation-->
@@ -29,7 +30,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                     <li class="nav-item"><a class="nav-link" href="#appointments">Appointments</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Add Appointment</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#add-appointment">Add Appointment</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
                 </ul>
             </div>
@@ -42,7 +43,7 @@
                 <div class="text-center">
                     <h1 class="mx-auto my-0 text-uppercase">Appointment Management System</h1>
                     <h2 class="text-white-50 mx-auto mt-2 mb-5">Embrace a New Era in Appointment Management!</h2>
-                    <a class="btn btn-primary" href="#projects">Appointments</a>
+                    <a class="btn btn-primary" href="#appointments">Appointments</a>
                 </div>
             </div>
         </div>
@@ -81,7 +82,42 @@
     </table>
         </section>
 
-
+    <!-- bu kısım randevu ekleme kısmı-->
+    <section class="projects-section bg-light" id="add-appointment">
+        <div class="container">
+            <h2 class="text-center">Create New Appointment</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="date" class="form-label">Date:</label>
+                    <input type="date" class="form-control" id="date" name="date" required>
+                </div>
+                <div class="mb-3">
+                    <label for="time" class="form-label">Time:</label>
+                    <input type="time" class="form-control" id="time" name="time" required>
+                </div>
+                <div class="mb-3">
+                    <label for="subject" class="form-label">Subject:</label>
+                    <input type="text" class="form-control" id="subject" name="subject" required>
+                </div>
+                <div class="mb-3">
+                    <label for="participants" class="form-label">Participants:</label>
+                    <input type="text" class="form-control" id="participants" name="participants" required>
+                </div>
+                <div class="form-actions d-flex justify-content-between">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary" style="text-align: center">Create Appointment</button>
+                    </div>
+                    
+                <div class="form-actions d-flex justify-content-end">
+                    <div class="col">
+                        <button type="reset" class="btn btn-secondary" style="text-align: center">Reset</button>
+                    </div>
+                </div>
+                </div>              
+            </form>
+        </div>
+    </section>
+    
         
         <!-- Signup-->
         <section class="signup-section" id="contact">
@@ -173,6 +209,7 @@
         document.querySelector('.img__btn').addEventListener('click', function() {
             document.querySelector('.cont').classList.toggle('s--signup');
         });
+        
     </script>
 
     <!-- Footer-->

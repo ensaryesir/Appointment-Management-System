@@ -9,8 +9,6 @@ router.use(function(req, res, next){
 
 router.get('/home',controller.home);
 router.get('/login',controller.login);
-router.get('/add-appointment',controller.addAppointment);
-router.get('/update-appointment',controller.updateAppointment);
 router.get('/appointments',controller.appointments);
 
 //router.get('/layout',controller.layout);
