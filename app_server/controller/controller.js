@@ -12,11 +12,6 @@ module.exports.appointments = function(req,res){
     res.render('appointments');
 };
 
-/*module.exports.layout = function(req,res){
-    //res.sendFile(path.join(__dirname,'../../view/DeleteAppointment.html'));
-    res.render('layout');
-};*/
-
 /****************************************************************************************/
 
 module.exports.loginPost = function(req,res){ //e-posta ve şifre girildikten sonra appointments sayfasına atması için
