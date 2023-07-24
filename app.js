@@ -2,7 +2,20 @@ const express = require('express');
 const path = require('path');
 const ejsLayouts = require('express-ejs-layouts');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 const app = express();
+app.use(express.json());
+
+mongoose.connect('mongodb://127.0.0.1:27017/AppointmentManagementSystemDb', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => {
+    console.log("Connected successfully");
+  })
+  .catch((err) => {
+    console.error("MongoDB Connection Error:", err);
+  });
 
 app.set('view engine', 'ejs'); // Görüntü motorunu tanımlama
 app.set('views', path.join(__dirname, 'app_server', 'views')); // Görüntülerin bulunacağı klasörü belirttim

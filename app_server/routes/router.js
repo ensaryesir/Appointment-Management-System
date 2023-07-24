@@ -5,6 +5,7 @@ var controller = require('../controller/controller');
 router.get('/home',controller.home);
 router.get('/login',controller.login);
 router.get('/appointments',controller.appointments);
+router.get('/login-operations',controller.loginOperations);
 
 router.post('/login',controller.loginPost); //home sayfasındaki post işlemi
 

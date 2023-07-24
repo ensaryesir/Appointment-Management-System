@@ -29,9 +29,8 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#appointments">Appointments</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#add-appointment">Add Appointment</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
+
+                    <li class="nav-item"><a class="nav-link" href="#login">Login</a></li>
                 </ul>
             </div>
         </div>
@@ -43,76 +42,67 @@
                 <div class="text-center">
                     <h1 class="mx-auto my-0 text-uppercase">Appointment Management System</h1>
                     <h2 class="text-white-50 mx-auto mt-2 mb-5">Embrace a New Era in Appointment Management!</h2>
-                    <a class="btn btn-primary" href="#appointments">Appointments</a>
+                    <a class="btn btn-primary" href="#login">Login</a>
                 </div>
             </div>
         </div>
     </header>
-    
-        <!-- Projects section (closed for use)--> <!--randevuları bu kısma yerleştireceğim-->
-        <section class="projects-section bg-light" id="appointments"> 
-            <!--style="background-image: url('../../public/assets/img/bg-masthead.jpg'); background-size: cover; background-repeat: no-repeat; height: 300px;"-->
-            <h2 class="text-center">My Appointments</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Subject</th>
-                <th>Participants</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>2023-03-08</td>
-                <td>10:00</td>
-                <td>Toplantı</td>
-                <td>Ahmet, Mehmet, Hasan</td>
-                <td><a href="#">Sil</a></td>
-            </tr>
-        </tbody>
-    </table>
-        </section>
-
-    <!-- bu kısım randevu ekleme kısmı-->
-    <section class="projects-section bg-light" id="add-appointment">
-        <div class="container">
-            <h2 class="text-center">Create New Appointment</h2>
-            <form>
-                <div class="mb-3">
-                    <label for="date" class="form-label">Date:</label>
-                    <input type="date" class="form-control" id="date" name="date" required>
-                </div>
-                <div class="mb-3">
-                    <label for="time" class="form-label">Time:</label>
-                    <input type="time" class="form-control" id="time" name="time" required>
-                </div>
-                <div class="mb-3">
-                    <label for="subject" class="form-label">Subject:</label>
-                    <input type="text" class="form-control" id="subject" name="subject" required>
-                </div>
-                <div class="mb-3">
-                    <label for="participants" class="form-label">Participants:</label>
-                    <input type="text" class="form-control" id="participants" name="participants" required>
-                </div>
-                <div class="form-actions d-flex justify-content-between">
-                    <div class="col">
-                        <button type="submit" class="btn btn-primary" style="text-align: center; padding-bottom:32px;">Create Appointment</button>
+ 
+    <section id="login">
+        <br>
+        <br>
+        <div class="cont">
+            <div class="form sign-in">
+                <h2>Welcome</h2>
+                <form action="/login" method="POST">
+                    <label>
+                        <span>Email</span>
+                        <input type="email" name="email" required>
+                    </label>
+                    <label>
+                        <span>Password</span>
+                        <input type="password" name="password" required>
+                    </label>
+                    <p class="forgot-pass">Forgot password?</p>
+                    <button type="submit" class="submit">Sign In</button>
+                </form>
+            </div>
+            <div class="sub-cont">
+                <div class="img">
+                    <div class="img__text m--up">
+                        <h3>Don't have an account? Please Sign up!</h3>
                     </div>
-                    
-                <div class="form-actions d-flex justify-content-end">
-                    <div class="col">
-                        <button type="reset" class="btn btn-secondary" style="text-align: center; padding-bottom: 32px;">Reset</button>
+                    <div class="img__text m--in">
+                        <h3>If you already have an account, just sign in.</h3>
+                    </div>
+                    <div class="img__btn">
+                        <span class="m--up">Sign Up</span>
+                        <span class="m--in">Sign In</span>
                     </div>
                 </div>
-                </div>              
-            </form>
+                <div class="form sign-up">
+                    <h2>Create your Account</h2>
+                    <form action="/register" method="POST">
+                        <label>
+                            <span>Name</span>
+                            <input type="text" name="name" required>
+                        </label>
+                        <label>
+                            <span>Email</span>
+                            <input type="email" name="email" required>
+                        </label>
+                        <label>
+                            <span>Password</span>
+                            <input type="password" name="password" required>
+                        </label>
+                        <button type="submit" class="submit">Sign Up</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
-    
-        
-        <!-- Signup-->
+
+    <!-- Signup-->
         <section class="signup-section" id="contact">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5">

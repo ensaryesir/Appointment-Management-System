@@ -12,6 +12,9 @@ module.exports.appointments = function(req,res){
     res.render('appointments');
 };
 
+module.exports.loginOperations = function(req,res){
+    res.render('login-operations');
+};
 /****************************************************************************************/
 
 module.exports.loginPost = function(req,res){ //e-posta ve şifre girildikten sonra appointments sayfasına atması için
