@@ -11,7 +11,7 @@ app.use(ejsLayouts);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-const router = require('./app_server/router/router');
+const router = require('./app_server/routes/router');
 app.use('/', router);
 
 app.use('/public', express.static(path.join(__dirname, 'public'))); // Public klasörünü erişime açtık (bu işleme haritalama deniyor)
