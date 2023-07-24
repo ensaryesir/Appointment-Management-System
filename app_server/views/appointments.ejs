@@ -64,15 +64,25 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>2023-03-08</td>
-                <td>10:00</td>
-                <td>Toplantı</td>
-                <td>Ahmet, Mehmet, Hasan</td>
-                <td><a href="#">Sil</a></td>
-            </tr>
+            <% for (const appointment of appointments) { %>
+                <tr>
+                    <td><%= appointment.date %></td>
+                    <td><%= appointment.time %></td>
+                    <td><%= appointment.subject %></td>
+                    <td><%= appointment.participants.join(', ') %></td>
+                    <td>
+                        <!-- Delete Button -->
+                        <form action="/appointments/<%= appointment._id %>?_method=DELETE" method="POST">
+                            <!-- _method meta verisi -->
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-danger" style="padding-bottom: 10x; padding-top: 10px;">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            <% } %>
         </tbody>
     </table>
+    <!--  style="padding-bottom: 20px; padding-top: 10px;" -->
         </section>
 
     <!-- bu kısım randevu ekleme kısmı-->

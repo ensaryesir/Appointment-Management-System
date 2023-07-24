@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
 app.use(express.json());
+const methodOverride = require('method-override');
 
 mongoose.connect('mongodb://127.0.0.1:27017/AppointmentManagementSystemDb', {
   useNewUrlParser: true,
@@ -28,6 +29,7 @@ const router = require('./app_server/routes/router');
 app.use('/', router);
 
 app.use('/public', express.static(path.join(__dirname, 'public'))); // Public klasörünü erişime açtık (bu işleme haritalama deniyor)
+
 
 const port = 8000;
 app.listen(port, () => {
