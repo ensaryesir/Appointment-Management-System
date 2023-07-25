@@ -13,7 +13,7 @@ router.get("/appointments", controller.listAppointments);
 
 //The router.post() method defines a route that handles a POST request coming to a specific URL path.
 //In contrast to the router.get() method that handles GET requests, the router.post() method is designed to handle data submissions from clients to the server.
-router.post("/login", controller.loginPost);
+router.post("/login-operations", controller.loginOrRegisterUser);
 router.post("/appointments", controller.createAppointment);
 
 router.delete("/appointments/:id", controller.deleteAppointment);

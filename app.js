@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const app = express();
 app.use(express.json());
 const methodOverride = require("method-override");
+const controller = require('./app_server/controller/controller');
 
 // Local MongoDb connection
 mongoose

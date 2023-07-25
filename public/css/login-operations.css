@@ -1,0 +1,17 @@
+#errorBox {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    z-index: 9999;
+  }
+  
+  #errorBox.show {
+    display: block;
+  }
+  

@@ -1,4 +1,5 @@
 const AppointmentModel = require("../models/appointmentModel");
+const AuthModel = require("../models/AuthModel");
 
 module.exports.home = function (req, res) {
   res.render("home");
@@ -14,10 +15,47 @@ module.exports.loginOperations = function (req, res) {
 
 /****************************************************************************************/
 
-module.exports.loginPost = function (req, res) {
+/*module.exports.loginPost = function (req, res) {
   // after entering the email and password, go to the appointments page
   console.log(req.body);
   res.redirect("appointments"); // using res.redirect instead of res.render, we ensure that the url of that page is written on the page we redirect to.
+};*/
+
+exports.loginOrRegisterUser = async (req, res) => {
+  try {
+    const { email, password, action } = req.body;
+
+    // Eğer action "login" ise kullanıcı girişini işle
+    if (action === "login") {
+      const user = await AuthModel.findOne({ email });
+
+      // Kullanıcıyı bulamazsa hata döndürün
+      if (!user) {
+        return res.status(404).json({ error: "Kullanıcı bulunamadı." });
+      }
+
+      // Parolayı doğrulayın
+      if (user.password === password) {
+        // Başarılı giriş durumunda /appointments sayfasına yönlendirin
+        res.redirect("/appointments");
+      } else {
+        res.status(401).json({ error: "Geçersiz parola." });
+      }
+    }
+    // Eğer action "register" ise yeni kullanıcıyı kaydet
+    else if (action === "register") {
+      const { name } = req.body;
+      const newUser = new AuthModel({ email, name, password });
+      await newUser.save();
+
+      res.status(201).json({ message: "Kullanıcı başarıyla kaydedildi." });
+    } else {
+      res.status(400).json({ error: "Geçersiz işlem." });
+    }
+  } catch (err) {
+    console.error("Kullanıcı girişi/kaydı hatası:", err);
+    res.status(500).json({ error: "İşlem sırasında bir hata oluştu." });
+  }
 };
 
 /******************************************************************************************/
@@ -26,7 +64,7 @@ module.exports.loginPost = function (req, res) {
 exports.listAppointments = async (req, res) => {
   try {
     const appointments = await AppointmentModel.find();
-    console.log(appointments); // showing data in the console (depending in the request)
+    //console.log(appointments); // showing data in the console (depending in the request)
     res.render("appointments.ejs", { appointments: appointments });
   } catch (err) {
     console.error("Error fetching appointments:", err);

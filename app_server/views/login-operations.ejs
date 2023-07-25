@@ -8,6 +8,7 @@
     />
     <link href="public/css/home.css" rel="stylesheet" />
     <link href="public/css/login.css" rel="stylesheet" />
+    <link href="public/css/login-operations.css" rel="stylesheet" />
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -88,13 +89,17 @@
       </div>
     </header>
 
+    <!--login-->
+    <div class="error-box" id="errorBox">
+      <div class="error-message" id="errorMessage"></div>
+    </div>
     <section id="login">
       <br />
       <br />
       <div class="cont">
         <div class="form sign-in">
           <h2>Welcome</h2>
-          <form action="/login" method="POST">
+          <form id="loginForm" method="POST">
             <label>
               <span>Email</span>
               <input type="email" name="email" required />
@@ -104,6 +109,8 @@
               <input type="password" name="password" required />
             </label>
             <p class="forgot-pass">Forgot password?</p>
+            <input type="hidden" name="action" value="login" />
+            <!-- Bu satır login işlemi için gizli alan -->
             <button type="submit" class="submit">Sign In</button>
           </form>
         </div>
@@ -120,9 +127,11 @@
               <span class="m--in">Sign In</span>
             </div>
           </div>
+
+          <!--register-->
           <div class="form sign-up">
             <h2>Create your Account</h2>
-            <form action="/register" method="POST">
+            <form id="registerForm" method="POST">
               <label>
                 <span>Name</span>
                 <input type="text" name="name" required />
@@ -135,6 +144,8 @@
                 <span>Password</span>
                 <input type="password" name="password" required />
               </label>
+              <input type="hidden" name="action" value="register" />
+              <!-- Bu satır register işlemi için gizli alan -->
               <button type="submit" class="submit">Sign Up</button>
             </form>
           </div>
