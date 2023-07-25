@@ -7,7 +7,8 @@ const app = express();
 app.use(express.json());
 const methodOverride = require('method-override');
 
-mongoose.connect('mongodb://127.0.0.1:27017/AppointmentManagementSystemDb', {
+// Local MongoDb connection
+mongoose.connect('mongodb://127.0.0.1:27017/AppointmentManagementSystemDb', { 
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -18,8 +19,8 @@ mongoose.connect('mongodb://127.0.0.1:27017/AppointmentManagementSystemDb', {
     console.error("MongoDB Connection Error:", err);
   });
 
-app.set('view engine', 'ejs'); // Görüntü motorunu tanımlama
-app.set('views', path.join(__dirname, 'app_server', 'views')); // Görüntülerin bulunacağı klasörü belirttim
+app.set('view engine', 'ejs'); // Defining the image engine
+app.set('views', path.join(__dirname, 'app_server', 'views')); // Specifying the folder where the images will be located
 app.use(ejsLayouts);
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,8 +29,7 @@ app.use(bodyParser.json());
 const router = require('./app_server/routes/router');
 app.use('/', router);
 
-app.use('/public', express.static(path.join(__dirname, 'public'))); // Public klasörünü erişime açtık (bu işleme haritalama deniyor)
-
+app.use('/public', express.static(path.join(__dirname, 'public'))); // Accessing the Public folder (this process is called mapping)
 
 const port = 8000;
 app.listen(port, () => {
