@@ -7,7 +7,7 @@ const controller = require("../controller/controller");
 //When such a GET request is received, it triggers a specific function on the server-side, and as a result, the server can return a webpage or data to the client.
 
 router.get("/home", controller.home);
-router.get("/login", controller.login);
+//router.get("/login", controller.login);
 router.get("/login-operations", controller.loginOperations);
 router.get("/appointments", controller.listAppointments);
 

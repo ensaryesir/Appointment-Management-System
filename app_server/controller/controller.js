@@ -5,9 +5,9 @@ module.exports.home = function (req, res) {
   res.render("home");
 };
 
-module.exports.login = function (req, res) {
+/*module.exports.login = function (req, res) {
   res.render("login");
-};
+};*/
 
 module.exports.loginOperations = function (req, res) {
   res.render("login-operations");
@@ -25,36 +25,39 @@ exports.loginOrRegisterUser = async (req, res) => {
   try {
     const { email, password, action } = req.body;
 
-    // Eğer action "login" ise kullanıcı girişini işle
+    // If action is "login", process user login
     if (action === "login") {
       const user = await AuthModel.findOne({ email });
 
-      // Kullanıcıyı bulamazsa hata döndürün
+      // If user not found, return an error
       if (!user) {
-        return res.status(404).json({ error: "Kullanıcı bulunamadı." });
+        return res.status(404).json({ error: "User not found." });
       }
 
-      // Parolayı doğrulayın
+      // Verify the password
       if (user.password === password) {
-        // Başarılı giriş durumunda /appointments sayfasına yönlendirin
+        // If login is successful, redirect to the /appointments page
         res.redirect("/appointments");
       } else {
-        res.status(401).json({ error: "Geçersiz parola." });
+        // If the password is incorrect, return an error
+        res.status(401).json({ error: "Invalid password." });
       }
     }
-    // Eğer action "register" ise yeni kullanıcıyı kaydet
+    // If action is "register", save the new user in the database
     else if (action === "register") {
       const { name } = req.body;
       const newUser = new AuthModel({ email, name, password });
       await newUser.save();
 
+      // After successful registration, redirect to the /appointments page
       res.redirect("/appointments");
     } else {
-      res.status(400).json({ error: "Geçersiz işlem." });
+      // If the action is invalid, return an error
+      res.status(400).json({ error: "Invalid action." });
     }
   } catch (err) {
-    console.error("Kullanıcı girişi/kaydı hatası:", err);
-    res.status(500).json({ error: "İşlem sırasında bir hata oluştu." });
+    console.error("Error during user login/registration:", err);
+    res.status(500).json({ error: "An error occurred during the process." });
   }
 };
 
