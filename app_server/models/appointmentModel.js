@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const appointmentSchema = new mongoose.Schema({
   date: String,
@@ -7,6 +7,9 @@ const appointmentSchema = new mongoose.Schema({
   participants: [String],
 });
 
-const AppointmentModel = mongoose.model('appointmentcollection', appointmentSchema);
+const AppointmentModel = mongoose.model(
+  "appointmentcollection",
+  appointmentSchema
+);
 
 module.exports = AppointmentModel;
