@@ -48,7 +48,7 @@ exports.loginOrRegisterUser = async (req, res) => {
       const newUser = new AuthModel({ email, name, password });
       await newUser.save();
 
-      res.status(201).json({ message: "Kullanıcı başarıyla kaydedildi." });
+      res.redirect("/appointments");
     } else {
       res.status(400).json({ error: "Geçersiz işlem." });
     }
