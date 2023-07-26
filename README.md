@@ -1,6 +1,6 @@
 # AppointmentManagementSystem
 
-Projenin kurulum adımları:
+# Projenin kurulum adımları:
 
 1.MongoDB Compass Kurulumu: 
 https://www.mongodb.com/try/download/compass linkinden MongoDB yi kurduktan sonra Connection kısmındaki URL kısmına mongodb://localhost:27017 yazıp connect işlemini gerçekleştiriyoruz. 
@@ -14,9 +14,9 @@ Aynı işlemi auths adında bir koleksiyon oluşturup tekrarlıyoruz.
 https://nodejs.org/tr/download/current adresinden uygun sürümü seçip indiriyoruz. Kurulumu doğrulamak için cmd'ye "node -v" yazıyoruz.
 Gerekli modüllerin hepsi yüklenmiştir. terminal'e npm start yazıp projeyi çalıştırdıktan sonra tarayıcıya localhost:8000/home yazarak anasayfamıza erişim sağlayabilirsiniz.
 
-/-------------------------------------------------------------English version-------------------------------------------------------------/
+/------------------------------English version------------------------------
 
-Installation steps of the project:
+# Installation steps of the project:
 
 1.Installing MongoDB Compass: 
 https://www.mongodb.com/try/download/compass after installing MongoDB from the link, we type mongodb://localhost:27017 into the URL section in the Connection section and perform the connect operation. 
