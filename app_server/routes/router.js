@@ -7,15 +7,29 @@ const controller = require("../controller/controller");
 //When such a GET request is received, it triggers a specific function on the server-side, and as a result, the server can return a webpage or data to the client.
 
 router.get("/home", controller.home);
-//router.get("/login", controller.login);
 router.get("/login-operations", controller.loginOperations);
-router.get("/appointments", controller.listAppointments);
 
 //The router.post() method defines a route that handles a POST request coming to a specific URL path.
 //In contrast to the router.get() method that handles GET requests, the router.post() method is designed to handle data submissions from clients to the server.
 router.post("/login-operations", controller.loginOrRegisterUser);
-router.post("/appointments", controller.createAppointment);
 
+router.get(
+  "/appointments",
+  (req, res, next) => {
+    if (req.session.user || req.session.newUser) {
+      next();
+    } else {
+      res.status(403).json({ error: "Unauthorized access." });
+    }
+  },
+  controller.listAppointments,
+  controller.createAppointment,
+  controller.deleteAppointment
+);
+
+router.get("/logout", controller.logoutUser); //logout operations
+
+router.post("/appointments", controller.createAppointment);
 router.delete("/appointments/:id", controller.deleteAppointment);
 
 module.exports = router;

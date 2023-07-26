@@ -1,12 +1,12 @@
 const express = require("express");
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
+const app = express();
 const path = require("path");
 const ejsLayouts = require("express-ejs-layouts");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const app = express();
-app.use(express.json());
 const methodOverride = require("method-override");
-const controller = require('./app_server/controller/controller');
 
 // Local MongoDb connection
 mongoose
@@ -27,6 +27,18 @@ app.use(ejsLayouts);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use(cookieParser());
+
+// use the express-session middleware
+app.use(
+  session({
+    secret: "mysecretkey", // Set a secure key
+    resave: false,
+    saveUninitialized: true,
+    // Other session options can be added here
+  })
+);
 
 const router = require("./app_server/routes/router");
 app.use("/", router);

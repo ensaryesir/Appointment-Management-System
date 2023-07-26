@@ -61,3 +61,22 @@ function deleteAppointment(appointmentId) {
     window.location.reload();
   }
 }
+
+//logout script
+function logoutUser() {
+  // When the "Logout" link is clicked, do not send a request to the backend
+  fetch("/logout", {
+    method: "GET",
+    credentials: "same-origin", // To send it together with cookies
+  })
+    .then((response) => {
+      if (response.redirected) {
+        // If the backend redirects us to the "/home" page, redirect the page to that URL
+        window.location.href = "/home";
+      }
+    })
+    .catch((error) => {
+      console.error("Logout işlemi başarısız oldu:", error);
+      // If the logout process fails, you can display an error message
+    });
+}

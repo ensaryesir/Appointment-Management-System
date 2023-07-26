@@ -5,21 +5,11 @@ module.exports.home = function (req, res) {
   res.render("home");
 };
 
-/*module.exports.login = function (req, res) {
-  res.render("login");
-};*/
-
 module.exports.loginOperations = function (req, res) {
   res.render("login-operations");
 };
 
 /****************************************************************************************/
-
-/*module.exports.loginPost = function (req, res) {
-  // after entering the email and password, go to the appointments page
-  console.log(req.body);
-  res.redirect("appointments"); // using res.redirect instead of res.render, we ensure that the url of that page is written on the page we redirect to.
-};*/
 
 exports.loginOrRegisterUser = async (req, res) => {
   try {
@@ -36,6 +26,10 @@ exports.loginOrRegisterUser = async (req, res) => {
 
       // Verify the password
       if (user.password === password) {
+
+        req.session.user = user; // creating a user session
+        console.log("There is a user session:", req.session.user);
+
         // If login is successful, redirect to the /appointments page
         res.redirect("/appointments");
       } else {
@@ -48,6 +42,9 @@ exports.loginOrRegisterUser = async (req, res) => {
       const { name } = req.body;
       const newUser = new AuthModel({ email, name, password });
       await newUser.save();
+     
+      req.session.newUser = newUser; // creating a user session
+      console.log("There is a user session:", req.session.user);
 
       // After successful registration, redirect to the /appointments page
       res.redirect("/appointments");
@@ -59,6 +56,20 @@ exports.loginOrRegisterUser = async (req, res) => {
     console.error("Error during user login/registration:", err);
     res.status(500).json({ error: "An error occurred during the process." });
   }
+};
+
+/******************************************************************************************/
+
+// Function for logout operation
+exports.logoutUser = (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.error("Session termination error:", err);
+    } else {
+      console.log("The session was successfully terminated.");
+    }
+    res.redirect("/home");
+  });
 };
 
 /******************************************************************************************/
@@ -116,3 +127,4 @@ exports.deleteAppointment = async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 };
+/******************************************************************************************/
