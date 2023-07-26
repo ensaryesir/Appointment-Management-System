@@ -14,8 +14,6 @@ Aynı işlemi auths adında bir koleksiyon oluşturup tekrarlıyoruz.
 https://nodejs.org/tr/download/current adresinden uygun sürümü seçip indiriyoruz. Kurulumu doğrulamak için cmd'ye "node -v" yazıyoruz.
 Gerekli modüllerin hepsi yüklenmiştir. terminal'e npm start yazıp projeyi çalıştırdıktan sonra tarayıcıya localhost:8000/home yazarak anasayfamıza erişim sağlayabilirsiniz.
 
-/------------------------------English version------------------------------
-
 # Installation steps of the project:
 
 1.Installing MongoDB Compass: 
