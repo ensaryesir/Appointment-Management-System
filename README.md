@@ -12,7 +12,7 @@ Aynı işlemi auths adında bir koleksiyon oluşturup tekrarlıyoruz.
 
 2.Node.js Kurulumu:
 https://nodejs.org/tr/download/current adresinden uygun sürümü seçip indiriyoruz. Kurulumu doğrulamak için cmd'ye "node -v" yazıyoruz.
-Gerekli modüllerin hepsi yüklenmiştir. terminal'e npm start yazıp projeyi çalıştırdıktan sonra tarayıcıya localhost:8000/home yazarak anasayfamıza erişim sağlayabilirsiniz.
+Gerekli modüllerin hepsi yüklenmiştir. terminal'e npm start veya nodemon app.js yazıp projeyi çalıştırdıktan sonra tarayıcıya localhost:8000/home yazarak anasayfamıza erişim sağlayabilirsiniz.
 
 # Installation steps of the project:
 
@@ -26,4 +26,4 @@ We create a collection called auths and repeat the same process.
 
 2.Node.js Installation:
 https://nodejs.org/tr/download/current we select the appropriate version from the address and download it. We type "node -v" into the cmd to verify the installation.
-All the necessary modules have been installed. after typing npm start in the terminal and running the project, you can access our homepage by typing localhost:8000/home in the browser.
+All the necessary modules have been installed. after typing npm start or nodemon app.js in the terminal and running the project, you can access our homepage by typing localhost:8000/home in the browser.

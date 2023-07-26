@@ -50,5 +50,5 @@ app.use(methodOverride("_method"));
 
 const port = 8000;
 app.listen(port, () => {
-  console.log(`Sunucu ${port} numaralı portta çalışıyor.`);
+  console.log(`The server is running on port ${port}.`);
 });
