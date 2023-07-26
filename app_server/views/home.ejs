@@ -60,9 +60,7 @@
               <a class="nav-link" href="#contact">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="http://localhost:8000/login-operations"
-                >Login</a
-              >
+              <a class="nav-link" href="#" onclick="redirectToLogin()">Login</a>
             </li>
           </ul>
         </div>
@@ -346,6 +344,12 @@
         .addEventListener("click", function () {
           document.querySelector(".cont").classList.toggle("s--signup");
         });
+
+      function redirectToLogin() {
+        const currentURL = window.location.href;
+        const loginURL = "/login-operations";
+        window.location.href = loginURL;
+      }
     </script>
 
     <!-- Footer-->

@@ -1,8 +1,3 @@
-/*!
- * Start Bootstrap - Grayscale v7.0.6 (https://startbootstrap.com/theme/grayscale)
- * Copyright 2013-2023 Start Bootstrap
- * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-grayscale/blob/master/LICENSE)
- */
 //
 // Scripts
 //
@@ -79,4 +74,10 @@ function logoutUser() {
       console.error("Logout işlemi başarısız oldu:", error);
       // If the logout process fails, you can display an error message
     });
+}
+
+function redirectToLogin() {
+  const currentURL = window.location.href;
+  const loginURL = "/login-operations";
+  window.location.href = loginURL;
 }
