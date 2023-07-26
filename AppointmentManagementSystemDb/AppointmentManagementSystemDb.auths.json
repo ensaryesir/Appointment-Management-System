@@ -1,0 +1,43 @@
+[{
+  "_id": {
+    "$oid": "64bfa6bcd1b4646ce577ddd6"
+  },
+  "email": "example1@gmail.com",
+  "name": "example1",
+  "password": "12345"
+},
+{
+  "_id": {
+    "$oid": "64bfa6dcd1b4646ce577ddd7"
+  },
+  "email": "example2@gmail.com",
+  "name": "example2",
+  "password": "12345"
+},
+{
+  "_id": {
+    "$oid": "64c0d02a67c42a3bbaca4fd2"
+  },
+  "email": "example3@gmail.com",
+  "name": "example3",
+  "password": "12345",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64c0dbf3e2276e193af3f81b"
+  },
+  "email": "example4@gmail.com",
+  "password": "12345",
+  "name": "example4",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64c0f0c515e26e94010a5c08"
+  },
+  "email": "example5@gmail.com",
+  "password": "12345",
+  "name": "example5",
+  "__v": 0
+}]
