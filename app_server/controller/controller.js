@@ -39,6 +39,11 @@ exports.loginOrRegisterUser = async (req, res) => {
     }
     // If action is "register", save the new user in the database
     else if (action === "register") {
+      const existingUser = await AuthModel.findOne({ email });
+      if (existingUser) {
+      // Eğer e-posta ile bir kullanıcı zaten varsa, hata döndürün
+      return res.status(409).json({ error: "E-mail is already registered." });
+    }
       const { name } = req.body;
       const newUser = new AuthModel({ email, name, password });
       await newUser.save();

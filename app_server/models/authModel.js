@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 const authSchema = new mongoose.Schema({
-  email: String,
-  name: String,
-  password: String,
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  name: { type: String, required: true },
 });
 
 const AuthModel = mongoose.model("auths", authSchema);
