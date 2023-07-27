@@ -31,22 +31,21 @@ app.use(bodyParser.json());
 
 app.use(cookieParser());
 
-const router = require("./app_server/routes/jwtRouter");
-app.use("/", router);
-
-app.use("/public", express.static(path.join(__dirname, "public"))); // Accessing the Public folder (this process is called mapping)
-
-app.use(methodOverride("_method"));
-
-// use the express-session middleware
-/*app.use(
+app.use(
   session({
     secret: "mysecretkey", // Set a secure key
     resave: false,
     saveUninitialized: true,
     // Other session options can be added here
   })
-);*/
+);
+
+const jwtRouter = require("./app_server/routes/jwtRouter");
+app.use("/", jwtRouter);
+
+app.use("/public", express.static(path.join(__dirname, "public"))); // Accessing the Public folder (this process is called mapping)
+
+app.use(methodOverride("_method"));
 
 const port = 8000;
 app.listen(port, () => {

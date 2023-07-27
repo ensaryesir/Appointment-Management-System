@@ -21,7 +21,8 @@ function authenticateToken(req, res, next) {
   const token = req.cookies.token; // We receive the token from the cookie
 
   if (!token) {
-    return res.status(401).json({ error: "Unauthorized access." });
+    return res.redirect("/login-operations");
+    //res.status(401).json({ error: "Unauthorized access." });
   }
 
   jwt.verify(token, "secretKey", (err, user) => {
@@ -33,9 +34,24 @@ function authenticateToken(req, res, next) {
   });
 }
 
+function checkUserSession(req, res, next) {
+  // Get user information from the session to check the user's connection
+  const user = req.session.user;
+  const newUser = req.session.newUser;
+
+  if (user || newUser) {
+    // If there is user information, switch to the next middleware or route
+    next();
+  } else {
+    // If there is no user information, redirect the user to the login screen
+    res.redirect("/login-operations");
+  }
+}
+
 router.get(
   "/appointments",
   authenticateToken,
+  checkUserSession,
   appointmentController.listAppointments,
   appointmentController.createAppointment,
   appointmentController.deleteAppointment
@@ -43,7 +59,7 @@ router.get(
 
 router.get("/logout", jwtAuthController.logoutUser);
 
-router.post("/appointments", appointmentController.createAppointment);
-router.delete("/appointments/:id", appointmentController.deleteAppointment);
+router.post("/appointments", checkUserSession, appointmentController.createAppointment);
+router.delete("/appointments/:id", checkUserSession, appointmentController.deleteAppointment);
 
 module.exports = router;

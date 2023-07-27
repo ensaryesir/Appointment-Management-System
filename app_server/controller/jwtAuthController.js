@@ -20,6 +20,7 @@ function verifyJWT(token) {
 
 exports.loginOrRegisterUser = async (req, res) => {
   try {
+    //console.log("Request Body:", req.body);
     const { email, password, action } = req.body;
 
     // If action is "login", process user login
@@ -36,6 +37,7 @@ exports.loginOrRegisterUser = async (req, res) => {
         const token = generateJWT(user);
         res.cookie("token", token, { httpOnly: true }); // We send the token as an HTTP only cookie
 
+        req.session.user = user;
         // If login is successful, redirect to the /appointments page
         res.redirect("/appointments");
       } else {
@@ -57,6 +59,7 @@ exports.loginOrRegisterUser = async (req, res) => {
       const token = generateJWT(newUser);
       res.cookie("token", token, { httpOnly: true }); // We send the token as an HTTP only cookie
 
+      req.session.user = newUser;
       // After successful registration, redirect to the /appointments page
       res.redirect("/appointments");
     } else {
@@ -77,6 +80,7 @@ exports.logoutUser = (req, res) => {
     // When the logout process is successful, redirect to the home page
     res.redirect("/home");
   } else {
-    res.status(401).json({ error: "Unauthorized access." });
+    //res.status(401).json({ error: "Unauthorized access." });
+    res.redirect("/login-operations");
   }
 };
