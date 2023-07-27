@@ -59,7 +59,15 @@ router.get(
 
 router.get("/logout", jwtAuthController.logoutUser);
 
-router.post("/appointments", checkUserSession, appointmentController.createAppointment);
-router.delete("/appointments/:id", checkUserSession, appointmentController.deleteAppointment);
+router.post(
+  "/appointments",
+  checkUserSession,
+  appointmentController.createAppointment
+);
+router.delete(
+  "/appointments/:id",
+  checkUserSession,
+  appointmentController.deleteAppointment
+);
 
 module.exports = router;
