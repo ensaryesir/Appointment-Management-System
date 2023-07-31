@@ -8,6 +8,8 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const jwt = require("jsonwebtoken");
+const webpush = require('web-push');
+const Notification = require('node-notifier');
 
 // Local MongoDb connection
 mongoose
@@ -46,6 +48,12 @@ app.use("/", jwtRouter);
 app.use("/public", express.static(path.join(__dirname, "public"))); // Accessing the Public folder (this process is called mapping)
 
 app.use(methodOverride("_method"));
+
+const publicVapidKey = 'BMYo01tmY4u3KYkOr_uR_NdonUF_1wafEzVc1CUBizk589YzG9K4hmeEiJG7J-zGwA4suxstRTz7rMrWCUP84AQ';
+const privateVapidKey = 'EJbDcDJSTfF8jJd5dtc_ihAwYa_MqhgpBsbmctATFFw';
+
+//setting vapid keys details
+webpush.setVapidDetails('mailto:yesirensar@gmail.com', publicVapidKey,privateVapidKey);
 
 const port = 8000;
 app.listen(port, () => {

@@ -73,6 +73,15 @@
               <a class="nav-link" href="#contact">Contact</a>
             </li>
             <li class="nav-item">
+              <a
+                class="nav-link"
+                id="webNotificationBtn"
+                href="#"
+                onclick="askNotificationPermission()"
+                >Send Notification</a
+              >
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="#" onclick="logoutUser()">Logout</a>
             </li>
           </ul>
@@ -351,7 +360,7 @@
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-    <script src="public/js/scripts.js"></script>
+    <script src="public/js/scripts.js" defer></script>
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
   </body>
 </html>
