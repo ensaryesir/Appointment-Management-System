@@ -83,7 +83,8 @@ function redirectToLogin() {
 // The necessary function to check whether the user supports notifications in the browser
 function checkNotificationSupport() {
   if (!("Notification" in window)) {
-    alert("Tarayıcınızda bildirimler desteklenmiyor.");
+    // If browser does not support notifications, show an alert
+    alert("Notifications are not supported in your browser.");
     return false;
   }
   return true;
@@ -95,11 +96,14 @@ async function askNotificationPermission() {
     return;
   }
 
+  // Request permission to show notifications
   const permission = await Notification.requestPermission();
   if (permission === "granted") {
+    // If permission is granted, send notifications for upcoming appointments
     sendNotificationsForUpcomingAppointments();
   } else {
-    alert("Bildirim izni reddedildi.");
+    // If permission is denied, show an alert
+    alert("Notification permission denied.");
   }
 }
 
@@ -112,46 +116,50 @@ function dateDifferenceInDays(date1, date2) {
 
 // Function to send notifications for upcoming appointments
 async function sendNotificationsForUpcomingAppointments() {
+  // Get all appointments from the table
   const appointments = document.querySelectorAll("#appointments tbody tr");
-  const currentDate = new Date();
+  const currentDate = new Date(); // Current date
 
   for (const appointment of appointments) {
     const dateCell = appointment.querySelector("td:first-child");
-    const date = new Date(dateCell.textContent);
+    const date = new Date(dateCell.textContent); // Appointment date
+
+    // Calculate the difference in days between the appointment date and the current date
     const diffInDays = dateDifferenceInDays(date, currentDate);
 
+    // If the appointment is one day away, send a notification
     if (diffInDays === 1) {
       const timeCell = appointment.querySelector("td:nth-child(2)");
       const subjectCell = appointment.querySelector("td:nth-child(3)");
       const participantsCell = appointment.querySelector("td:nth-child(4)");
 
-      const title = `Yarın ${timeCell.textContent} saatinde "${subjectCell.textContent}" randevunuz var.`;
-      const message = `Katılımcılar: ${participantsCell.textContent}`;
+      const title = `You have an appointment "${subjectCell.textContent}" tomorrow at ${timeCell.textContent}.`;
+      const message = `Participants: ${participantsCell.textContent}`;
       sendNotification(title, message);
     }
   }
 }
 
-// Bildirimi göndermek için gerekli işlev
+// Function to send a notification
 function sendNotification(title, message) {
   if (!checkNotificationSupport()) {
     return;
   }
 
-  // Web bildirimi oluşturuluyor
+  // Create a web notification
   const notification = new Notification(title, {
     body: message,
-    icon: "icon.png", // İstediğiniz bir ikonun yolunu verin
+    icon: "icon.png", // Provide the path of an icon you want to use
   });
 
-  // Bildirime tıklandığında yapılacak işlem (isteğe bağlı)
+  // Action to be performed when the notification is clicked (optional)
   notification.onclick = function () {
-    // Bildirime tıklandığında bir şey yapmak istiyorsanız burada belirtebilirsiniz
-    // Örneğin, kullanıcıyı belirli bir sayfaya yönlendirebilirsiniz.
+    // You can specify an action to be taken when the notification is clicked
+    // For example, you can redirect the user to a specific page.
     window.open("http://localhost:8000/appointments");
   };
 }
 
-// Bildirim isteğini tetiklemek için uygun bir olaya (örn. düğme tıklaması) dinleyici ekleyin
+// Add a listener to trigger the notification request on a suitable event (e.g., button click)
 const notificationBtn = document.getElementById("webNotificationBtn");
 notificationBtn.addEventListener("click", askNotificationPermission);
